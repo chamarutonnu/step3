@@ -10,6 +10,31 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if user_signed_in? %>
+      <header>
+        <div class="header-content">
+          <%= link_to 'ufaen', root_path, class: "logo-user" %>
+          <%= link_to 'username', "" %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        </div>
+      </header>
+    <% else %>
+      <header>
+        <div class="header-content">
+          <%= link_to 'ufaen', root_path, class: "logo" %>
+          <%= link_to 'ログイン', new_user_session_path %>/
+          <%= link_to '新規会員登録', new_user_registration_path %>
+        </div>
+
+
+      </header>
+    <% end %>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>ufaen</footer>
   </body>
 </html>
+
