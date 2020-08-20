@@ -1,0 +1,22 @@
+<h3>>コーディネイtl編集</h3>
+
+<%= form_for(@post_image) do |f| %>
+	<div>
+		<%= f.label :"プロフィール画像" %>
+		<%= f.attachment_field :image, placeholder: "コーディネイト画像", class: "image-edit-form" %>
+	</div>
+	<div>
+		<%= f.label :code_name %>
+		<%= f.text_field :code_name, autofocus: true %>
+	</div>
+	<div>
+		<%= f.label :code_thema %>
+		<%= f.text_field :code_thema, autofocus: true %>
+	</div>
+	<div>
+		<%= f.label :code_explain %>
+		<%= f.text_field :code_explain, autofocus: true %>
+	</div>
+	<%= f.submit "変更を保存する" ,class: 'btn btn-primary' %>
+	<%= link_to "削除", post_image_path(@post_image), method: :delete %>
+<% end %>

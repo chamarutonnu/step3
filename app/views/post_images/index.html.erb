@@ -1,0 +1,7 @@
+<h1>投稿一覧</h1>
+
+<% @post_images.each do |post_image| %>
+	<%= link_to post_image_path(post_image.id) do %>
+	<%= attachment_image_tag post_image, :image, :size =>'320x400' %>
+	<% end %>
+<% end %>

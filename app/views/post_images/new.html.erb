@@ -1,1 +1,18 @@
-a
+<div class="center-block" style="width: 300px;padding: 60px;">
+<span>画像投稿フォーム</span>
+
+	<%= form_for(@post_image, url: post_images_path) do |f| %>
+		<%= f.attachment_field :image %>
+			<p>
+      	<%= f.label :"コーディネイト名" %>　　 <%= f.text_field :code_name %>
+      </p>
+      <p>
+      	<%= f.label :"コーディネイトテーマ" %>　　 <%= f.text_field :code_thema %>
+      </p>
+      <p>
+      	<%= f.label :"コーディネイト説明" %>　　 <%= f.text_area :code_explain %>
+      </p>
+		<%= f.submit '新規登録', class: "btn btn-primary pull-right " %>
+	<% end %>
+</div>
+
