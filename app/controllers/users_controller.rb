@@ -1,13 +1,14 @@
 class UsersController < ApplicationController
 
 	def index
+    @users = User.all
+
 	end
 
 	def show
 		@user = User.find(params[:id])
 		@post_images = @user.post_images.page(params[:page]).reverse_order
-		@favorite_post_image = @user.favorite_post_image
-
+		@favorite_post_image = @user.favorite_post_images
 	end
 
 	def edit
@@ -58,7 +59,7 @@ class UsersController < ApplicationController
 
 	private
   def user_params
-    params.require(:user).permit(:name, :first_name, :second_name, :first_name_kana, :second_name_kana, :profile_image, :email, :password, :password_confirmation, :is_deleted, :user_name, :infroduction, :is_sex)
+    params.require(:user).permit(:name, :first_name, :second_name, :first_name_kana, :second_name_kana, :profile_image, :email, :password, :password_confirmation, :is_deleted, :user_name, :introduction, :is_sex)
   end
 
 end

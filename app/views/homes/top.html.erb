@@ -1,2 +1,28 @@
 <h1>Homes#top</h1>
 <p>Find me in app/views/homes/top.html.erb</p>
+
+<div class="row">
+  <div class="col-xs-5">
+  　<div class="side-box">
+      <p class="side-title">おすすめユーザー</p>
+      <% @famous_users.each do |famous_user|%>
+        <p class="user-profile">
+          <%= attachment_image_tag famous_user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size:'30x30' %>
+          <%=link_to famous_user.user_name, user_path(famous_user) %>
+        </p>
+      <% end %>
+    </div>
+    <div>
+    </div>
+  </div>
+
+
+  <div class="col-xs-7">
+    <h2>おすすめのコーディネイト</h2>
+    <div class="a">
+      <div class="b"><img class="c" src="assets/no_image.png"></div>
+      <div class="b"><img class="c" src="assets/no_image.png"></div>
+      <div class="b"><img class="c" src="assets/no_image.png"></div>
+    </div>
+  </div>
+</div>

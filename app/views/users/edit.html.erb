@@ -1,42 +1,62 @@
-<h2>登録登録情報編集</h2>
-
+<br>
+<h2>登録情報編集</h2>
+<br>
 <%= form_for(@user) do |f| %>
 
 	<div>
 		<%= f.label :"プロフィール画像" %>
 		<%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
 	</div>
+  <br>
 	<div>
-		<%= f.label :name %>
-		<%= f.text_field :first_name, autofocus: true %>
-		<%= f.text_field :second_name, autofocus: true %>
+	    <%= f.label :name %>
+    <p>
+	    <%= f.text_field :first_name, autofocus: true %>
+		  <%= f.text_field :second_name, autofocus: true %>
+    </p>
 	</div>
 
-  <div>
-  	<%= f.label :"フリガナ" %>
-  	<%= f.text_field :first_name_kana, autofocus: true %>
-		<%= f.text_field :second_name_kana, autofocus: true %>
-  </div>
+  <br>
 
   <div>
-    <%= f.label :"username" %>
-    <%= f.text_field :user_name, autofocus: true %>
+  	  <%= f.label :"フリガナ" %>
+    <p>
+      <%= f.text_field :first_name_kana, autofocus: true %>
+  	  <%= f.text_field :second_name_kana, autofocus: true %>
+    </p>
   </div>
-
+  <br>
   <div>
-  	<%= f.label :"メールアドレス" %>
-  	<%= f.text_field :email, autofocus: true %>
+      <%= f.label :"username" %>
+    <p>
+      <%= f.text_field :user_name, autofocus: true %>
+    </p>
   </div>
-
+  <br>
   <div>
-    <%= f.label :"自己紹介" %>
-    <%= f.text_area :introduction, autofocus: true %>
+  	  <%= f.label :"メールアドレス" %>
+    <p>
+  	  <%= f.text_field :email, autofocus: true %>
+    </p>
   </div>
-
-
-
-  <%= f.submit "変更を保存する" ,class: 'btn btn-primary' %>
-  <%= link_to "退会する", user_withdrawal_path, class: "btn btn-danger" %>
-  <%= link_to "パスワードを変更する", edit_user_registration_path, class: 'btn btn-success btn-sm' %>
+  <br>
+  <div>
+      <%= f.label :"自己紹介" %>
+    <p>
+      <%= f.text_area :introduction, autofocus: true %>
+    </p>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-2">
+      <%= f.submit "変更を保存する" ,class: 'btn btn-primary' %>
+    </div>
+    <div class="col-xs-2">
+      <%= link_to "退会する", user_withdrawal_path, class: 'btn btn-danger' %>
+    </div>
+    <div class="col-xs-2">
+      <%= link_to "パスワードを変更する", edit_user_registration_path, class: 'btn btn-success' %>
+    </div>
+  </div>
 
 <% end %>

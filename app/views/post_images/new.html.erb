@@ -1,18 +1,35 @@
-<div class="center-block" style="width: 300px;padding: 60px;">
-<span>画像投稿フォーム</span>
-
+<div class="row">
+  <div class="col-xs-4">
+<h2>コーディネイト投稿</h2>
+<br>
 	<%= form_for(@post_image, url: post_images_path) do |f| %>
 		<%= f.attachment_field :image %>
+    <br>
 			<p>
-      	<%= f.label :"コーディネイト名" %>　　 <%= f.text_field :code_name %>
+      	<%= f.label :"コーディネイト名" %><br/>
+        <%= f.text_field :code_name %>
+      </p>
+      <br>
+      <p>
+      	<%= f.label :"コーディネイトテーマ" %><br/>
+        <%= f.text_field :code_thema %>
+      </p>
+      <br>
+      <p>
+      	<%= f.label :"コーディネイト説明" %><br/>
+        <%= f.text_area :code_explain %>
+      </p>
+      <br>
+      <p>
+        <%= f.label :"コーディネイトジャンル" %><br/>
+        <%= f.select :genres_id, {'tシャツ': 'tシャツ', 'シャツ': 'シャツ', 'パーカ': 'パーカー', 'コート': 'コート'}, { include_blank: '選択してください'}, {required: true } %>
       </p>
       <p>
-      	<%= f.label :"コーディネイトテーマ" %>　　 <%= f.text_field :code_thema %>
-      </p>
-      <p>
-      	<%= f.label :"コーディネイト説明" %>　　 <%= f.text_area :code_explain %>
+        <%= f.label :"季節" %><br/>
+        <%= f.select :season, {'春': '春', '夏': '夏', '秋': '秋', '冬': '冬'}, { include_blank: '選択してください'}, {required: true } %>
       </p>
 		<%= f.submit '新規登録', class: "btn btn-primary pull-right " %>
 	<% end %>
+  </div>
 </div>
 

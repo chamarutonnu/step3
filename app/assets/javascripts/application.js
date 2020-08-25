@@ -11,9 +11,17 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
 
 
+$(function() {
+  $('.a').slick({
+      dots: true,
+  });
+
+  $('.slick-dots li').on('mouseover', function() {
+    $('.a').slick('goTo', $(this).index());
+  });
+});

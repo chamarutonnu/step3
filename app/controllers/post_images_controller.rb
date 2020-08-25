@@ -4,13 +4,20 @@ class PostImagesController < ApplicationController
   end
 
   def index
-  	@post_images = PostImage.all
+    @post_images = PostImage.all
+    if params[:own_posts] == 'true'
+      @post_images = @post_images.where(user_id: current_user.id).page(params[:page]).reverse_order
+    elsif params[:my_favorites] == 'true'
+      @post_images = current_user.favorite_post_images.page(params[:page]).reverse_order
+    end
+    @post_images = @post_images.page(params[:page]).reverse_order
   end
 
   def show
   	@post_image = PostImage.find(params[:id])
     @comments = @post_image.comments
     @comment = current_user.comments.new
+    @user = @post_image.user
   end
 
   def create
@@ -44,7 +51,7 @@ class PostImagesController < ApplicationController
 
   private
      def post_image_params
-        params.require(:post_image).permit(:image, :code_name, :code_thema, :code_explain)
+        params.require(:post_image).permit(:image, :code_name, :code_thema, :code_explain, :genres_id, :season, :user_name, :profile_image_id)
      end
 
 end
