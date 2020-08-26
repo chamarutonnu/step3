@@ -1,24 +1,33 @@
 class PostImagesController < ApplicationController
+before_action :authenticate_user!, except: [:index, :show]
+
 	def new
 		@post_image = PostImage.new
   end
 
   def index
-    @user = User.find(params[:format])
-    @post_images = PostImage.all
-    if params[:own_posts] == 'true'
-      @post_images = @post_images.where(user_id: @user.id).page(params[:page]).reverse_order
-    elsif params[:my_favorites] == 'true'
-      @post_images = @user.favorite_post_images.page(params[:page]).reverse_order
+    if params[:format]
+      @user = User.find(params[:format])
+      if params[:own_posts] == 'true'
+        @post_images = PostImage.where(user_id: @user.id).page(params[:page]).reverse_order
+      elsif params[:my_favorites] == 'true'
+        @post_images = @user.favorite_post_images.page(params[:page]).reverse_order
+      end
+    else
+        @post_images = PostImage.all.page(params[:page]).reverse_order
     end
-    @post_images = @post_images.page(params[:page]).reverse_order
   end
 
   def show
-  	@post_image = PostImage.find(params[:id])
-    @comments = @post_image.comments
-    @comment = current_user.comments.new
-    @user = @post_image.user
+    if user_signed_in?
+    	@post_image = PostImage.find(params[:id])
+      @comments = @post_image.comments
+      @comment = current_user.comments.new
+      @user = @post_image.user
+    else
+      @post_image = PostImage.find(params[:id])
+      @user = @post_image.user
+    end
   end
 
   def create
@@ -42,6 +51,11 @@ class PostImagesController < ApplicationController
 
   def edit
     @post_image = PostImage.find(params[:id])
+    if @post_image.user == current_user
+        render "edit"
+    else
+        redirect_to users_path
+    end
   end
 
   def destroy
@@ -52,7 +66,7 @@ class PostImagesController < ApplicationController
 
   private
      def post_image_params
-        params.require(:post_image).permit(:image, :code_name, :code_thema, :code_explain, :genres_id, :season, :user_name, :profile_image_id)
+        params.require(:post_image).permit(:image, :code_name, :code_thema, :code_explain, :category, :season, :user_name, :profile_image_id)
      end
 
 end

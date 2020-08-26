@@ -19,11 +19,11 @@
 	</div>
 	<div class="image-edit">
 		<%= f.label :"カテゴリー" %>
-		<%= f.select :genres_id, {'tシャツ': 'tシャツ', 'シャツ': 'シャツ', 'パーカ': 'パーカー', 'コート': 'コート'}, { include_blank: '選択してください'}, {required: true } %>
+		<%= f.select :category, {'tシャツ': 't_shirt', 'シャツ': 'shirt', 'ジャケット': 'jacket', 'ニット': 'knit', 'コート': 'coat', 'デニム': 'denim', 'その他': 'other'}, { include_blank: '選択してください'}, {required: true } %>
 	</div>
 	<div class="image-edit">
 		<%= f.label :"季節" %>
-		<%= f.select :season, {'春': '春', '夏': '夏', '秋': '秋', '冬': '冬'}, { include_blank: '選択してください'}, {required: true } %>
+		<%= f.select :season, {'春': 'spring', '夏': 'summer', '秋': 'autumn', '冬': 'winter'}, { include_blank: '選択してください'}, {required: true } %>
 	</div>
 
 	<div class="row">
