@@ -1,0 +1,202 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+header {
+	height: 110px;
+	margin: 0 auto;
+  background-image: url("<%= asset_path('dairiseki.jpg') %>");
+  background-size: cover;
+}
+
+main {
+	background-color: #EEEEEE ;
+	height: 840px;
+  overflow: scroll;
+}
+
+footer {
+	background-color: #FFF;
+  height: 60px;
+  background-image: url("<%= asset_path('dairiseki.jpg') %>");
+  background-size: cover;
+}
+
+.top-box {
+  margin-top: 30px;
+}
+
+.top-images {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.header-contents {
+padding-top: 20px;
+}
+
+.header-items li {
+  float: left;
+  list-style: none;
+  margin: 30px;
+}
+.item {
+  magin: 30px;
+}
+
+.logo img{
+  height: 30px;
+  width: 30px;
+  marigin-right: 30px;
+}
+
+.nav-list {
+  text-align: center;
+  padding: 10px 0;
+  margin: 0 auto;
+}
+.nav-list-item {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.profile-box {
+  padding: 30px;
+  font-size: 30px;
+}
+
+.user-information {
+  height: 265px;
+}
+
+.user-name {
+  font-size: 30px;
+}
+
+.user-introduction {
+  font-size: 20px;
+  height: 180px;
+  overflow: scroll;
+}
+
+.image img{
+  border-radius: 50%;
+}
+
+.user-edit {
+  margin-left: 38px;
+  margin-top: 20px;
+
+}
+
+
+.forth-box {
+  margin-top: 50px;
+  padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: #eee;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+.forth-box p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 18px;
+}
+
+.flex {
+  display: flex;
+  background-color: #fff;
+  flex-wrap: wrap;
+  justify-content: start;
+  height: 770px;
+}
+.flex > div {
+  width: 33.3%;
+  padding: 10px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.code_new {
+  text-align: center;
+  margin: 150px;
+  font-size: 25px;
+}
+
+.c{
+  height: 600px;
+  width :100%;
+}
+
+.slick-dots {
+  li {
+    font-size: 20px !important;
+    button:before {
+      content: "★" !important;
+      font-size: 14px !important;
+      color: rgb(60, 60, 60) !important;
+    }
+  }
+}
+
+.pagination {
+  padding-left: 46%;
+}
+
+.sub-box {
+  marigin: 50px;
+}
+
+.sub-title {
+  font-size: 25px;
+}
+
+.sub {
+  font-size: 19px;
+  padding-bottom: 10px;
+}
+
+.favorites {
+  font-size: 25px;
+}
+
+.image-edit {
+  padding-bottom: 20px;
+}
+
+.follow {
+  margin-left: 60px;
+}
+
+.side-title {
+  margin-top: 20px;
+  font-size: 25px;
+}
+
+.season-items-box {
+  text-align: left;
+}
+.season-items {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+

@@ -1,0 +1,62 @@
+<br>
+<h2>登録情報編集</h2>
+<br>
+<%= form_for(@user) do |f| %>
+
+	<div>
+		<%= f.label :"プロフィール画像" %>
+		<%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+	</div>
+  <br>
+	<div>
+	    <%= f.label :name %>
+    <p>
+	    <%= f.text_field :first_name, autofocus: true %>
+		  <%= f.text_field :second_name, autofocus: true %>
+    </p>
+	</div>
+
+  <br>
+
+  <div>
+  	  <%= f.label :"フリガナ" %>
+    <p>
+      <%= f.text_field :first_name_kana, autofocus: true %>
+  	  <%= f.text_field :second_name_kana, autofocus: true %>
+    </p>
+  </div>
+  <br>
+  <div>
+      <%= f.label :"username" %>
+    <p>
+      <%= f.text_field :user_name, autofocus: true %>
+    </p>
+  </div>
+  <br>
+  <div>
+  	  <%= f.label :"メールアドレス" %>
+    <p>
+  	  <%= f.text_field :email, autofocus: true %>
+    </p>
+  </div>
+  <br>
+  <div>
+      <%= f.label :"自己紹介" %>
+    <p>
+      <%= f.text_area :introduction, autofocus: true %>
+    </p>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-2">
+      <%= f.submit "変更を保存する" ,class: 'btn btn-primary' %>
+    </div>
+    <div class="col-xs-2">
+      <%= link_to "退会する", user_withdrawal_path, class: 'btn btn-danger' %>
+    </div>
+    <div class="col-xs-2">
+      <%= link_to "パスワードを変更する", edit_user_registration_path, class: 'btn btn-success' %>
+    </div>
+  </div>
+
+<% end %>
