@@ -19,23 +19,17 @@
         <li class= "season-items"><%= link_to "秋", homes_search_season_path(season: 'autumn') %></li>
         <li class= "season-items"><%= link_to "冬", homes_search_season_path(season: 'winter') %></li>
       </ul>
-
-      <p class="side-title"><カテゴリーで探す</p>
-      <ul class="list-group">
-        <li class= "category-items"><%= link_to "春", homes_search_category_path(season: 'spring') %></li>
-        <li class= "category-items"><%= link_to "夏", homes_search_category_path(season: 'summer') %></li>
-        <li class= "category-items"><%= link_to "秋", homes_search_category_path(season: 'autumn') %></li>
-        <li class= "category-items"><%= link_to "冬", homes_search_category_path(season: 'winter') %></li>
-      </ul>
     </div>
-
-
     <div class="col-xs-7">
-      <h2>おすすめのコーディネイト</h2>
-      <div class="a">
-        <div class="b"><img class="c" src="/assets/no_image.png"></div>
-        <div class="b"><img class="c" src="/assets/no_image.png"></div>
-        <div class="b"><img class="c" src="/assets/no_image.png"></div>
+      <div class="row">
+        <h2>コーディネイト</h2>
+        <% @post_images.each do |post_image| %>
+          <div class="col-xs-4">
+            <p class="top-images"><%= attachment_image_tag post_image, :image, :fill, 100, 100, fallback: "no_image.png", size:'190x190' %></p>
+          </div>
+        <% end %>
+        <%= paginate @post_images %>
       </div>
+    </div>
   </div>
 </div>

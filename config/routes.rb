@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   root 'homes#top'
   get 'homes/about'
+  get 'homes/search_category'
+  get 'homes/search_season'
 
   get 'relationships/create'
   get 'relationships/destroy'

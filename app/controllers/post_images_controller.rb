@@ -4,11 +4,12 @@ class PostImagesController < ApplicationController
   end
 
   def index
+    @user = User.find(params[:format])
     @post_images = PostImage.all
     if params[:own_posts] == 'true'
-      @post_images = @post_images.where(user_id: current_user.id).page(params[:page]).reverse_order
+      @post_images = @post_images.where(user_id: @user.id).page(params[:page]).reverse_order
     elsif params[:my_favorites] == 'true'
-      @post_images = current_user.favorite_post_images.page(params[:page]).reverse_order
+      @post_images = @user.favorite_post_images.page(params[:page]).reverse_order
     end
     @post_images = @post_images.page(params[:page]).reverse_order
   end
