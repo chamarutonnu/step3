@@ -5,7 +5,7 @@
       <div class="side-box">
         <p class="side-title">おすすめユーザー</p>
         <% @famous_users.each do |famous_user|%>
-          <p class="user-profile">
+          <p class="image">
             <%= attachment_image_tag famous_user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size:'30x30' %>
             <%=link_to famous_user.user_name, user_path(famous_user) %>
           </p>
@@ -20,20 +20,26 @@
         <li class= "season-items"><%= link_to "冬", homes_search_season_path(season: 'winter') %></li>
       </ul>
 
-      <p class="side-title"><カテゴリーで探す</p>
+      <p class="side-title">カテゴリーで探す</p>
       <ul class="list-group">
-        <li class= "category-items"><%= link_to "春", homes_search_category_path(season: 'spring') %></li>
-        <li class= "category-items"><%= link_to "夏", homes_search_category_path(season: 'summer') %></li>
-        <li class= "category-items"><%= link_to "秋", homes_search_category_path(season: 'autumn') %></li>
-        <li class= "category-items"><%= link_to "冬", homes_search_category_path(season: 'winter') %></li>
+        <li class= "category-items"><%= link_to "t shirt", homes_search_category_path(category: 't shirt') %></li>
+        <li class= "category-items"><%= link_to "shirt", homes_search_category_path(category: 'shirt') %></li>
+        <li class= "category-items"><%= link_to "jacket", homes_search_category_path(category: 'jacket') %></li>
+        <li class= "category-items"><%= link_to "knit", homes_search_category_path(category: 'knit') %></li>
+        <li class= "category-items"><%= link_to "coat", homes_search_category_path(category: 'coat') %></li>
+        <li class= "category-items"><%= link_to "denim", homes_search_category_path(category: 'denim') %></li>
+        <li class= "category-items"><%= link_to "other", homes_search_category_path(category: 'other') %></li>
       </ul>
     </div>
-
 
     <div class="col-xs-7">
       <h2>おすすめのコーディネイト</h2>
       <div class="a">
-        <div class="b"><img class="c" src="/assets/no_image.png"></div>
+        <div class="b">
+          <%= link_to post_image_path(34) do %>
+          <img class="c" src="/assets/box2.jpg">
+          <% end %>
+        </div>
         <div class="b"><img class="c" src="/assets/no_image.png"></div>
         <div class="b"><img class="c" src="/assets/no_image.png"></div>
       </div>

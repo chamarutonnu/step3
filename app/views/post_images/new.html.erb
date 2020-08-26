@@ -22,7 +22,7 @@
       <br>
       <p>
         <%= f.label :"コーディネイトジャンル" %><br/>
-        <%= f.select :genres_id, {'tシャツ': 't shirt', 'シャツ': 'shirt', 'ジャケット': 'jacket', 'ニット': 'knit' 'コート': 'coat', 'デニム': 'denim', 'その他': 'other'}, { include_blank: '選択してください'}, {required: true } %>
+        <%= f.select :category, {'tシャツ': 't_shirt', 'シャツ': 'shirt', 'ジャケット': 'jacket', 'ニット': 'knit', 'コート': 'coat', 'デニム': 'denim', 'その他': 'other'}, { include_blank: '選択してください'}, {required: true } %>
       </p>
       <p>
         <%= f.label :"季節" %><br/>
