@@ -1,0 +1,27 @@
+<h1>会員一覧</h1>
+<div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="active">profile_image</th>
+          <th class="active">会員ID</th>
+          <th class="active">user_name</th>
+          <th class="active">ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= attachment_image_tag user, :profile_image, :fill, 30, 30, fallback: "no_image.png", size:'30x30' %></td>
+          <td><%= user.id %></td>
+          <td>
+            <%= link_to user_path(user) do %>
+              <%= user.user_name %>
+            <% end %>
+          </td>
+          <td><%= user.is_deleted %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

@@ -1,0 +1,45 @@
+<div class="profile-box">
+  <div class="row">
+    <div class="col-xs-3">
+      <p class="image"><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size:'220x220' %></p>
+      <% if user_signed_in? %>
+        <% if current_user != @user %>
+          <% if @user.followed_by?(current_user) %>
+            <p class="follow"><%=link_to "フォロー済み", user_relationships_path(@user.id), class: "btn btn-primary", method: :delete %>
+          <% else %>
+            <p class="follow"><%=link_to "フォローする", user_relationships_path(@user.id), class: "btn btn-primary", method: :post %>
+          <% end %>
+        <% else %>
+            <p class="user-edit"><%= link_to "プロフィールを変更", edit_user_path, class: "btn btn-primary" %></p>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="user-information">
+      <div class="col-xs-9">
+        <p class="user-name"><%= @user.user_name %></p><br>
+        <p class="user_introduction"><%= simple_format(@user.introduction) %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="forth-box">
+  <div class="row">
+    <div class="col-xs-3">
+      <p class="item"><%=link_to "投稿", post_images_path(@user.id, own_posts: true) %></p>
+    </div>
+    <div class="col-xs-3">
+      <p class="item"><%=link_to "いいね", post_images_path(@user.id, my_favorites: true) %></p>
+    </div>
+    <div class="col-xs-3">
+      <p class="item"><%=link_to "フォロー", follows_user_path(@user.id) %></p>
+    </div>
+    <div class="col-xs-3">
+      <p class="item"><%=link_to "フォロワー", followers_user_path(@user.id) %></p>
+    </div>
+  </div>
+</div>
+<div class="code_new">
+  <p>コーディネイトを登録しよう！</p>
+  <p><%= link_to "コーディネイト投稿", new_post_image_path %></p>
+</div>

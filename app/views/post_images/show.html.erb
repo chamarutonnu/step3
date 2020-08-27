@@ -1,0 +1,132 @@
+<div class="row">
+  <div class="col-xs-6">
+    <div class="profile-box">
+      <p class="image">
+        <%= link_to user_path(@user.id) do%>
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size:'110x110' %>
+        <% end %>
+        <%= @user.user_name %>
+      </p>
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <br>
+    <br>
+    <br>
+    <div>
+    <% if user_signed_in? %>
+      <% if current_user != @post_image.user %>
+        <% if @post_image.user.followed_by?(current_user) %>
+          <p><%=link_to "フォロー済み", user_relationships_path(@post_image.user.id), class: 'btn btn-primary', method: :delete %></p>
+      <% else %>
+          <p><%=link_to "フォローする", user_relationships_path(@post_image.user.id), class: 'btn btn-primary', method: :post %></p>
+        <% end %>
+      <% end %>
+    <% end %>
+    </div> 
+  </div>
+</div>
+<br>
+<div class="row">
+	<div class="col-xs-6">
+		<div class="post-image">
+			<%= attachment_image_tag @post_image, :image,:size =>'490x590' %>
+		</div>
+	</div>
+
+	<div class="col-xs-6">
+	  <table>
+	  	<tbody>
+	  		<tr>
+	  			<th class="sub-title">コーディネイト名</th>
+	  		</tr>
+	  		<tr>
+	  			<th class="sub"><%= @post_image.code_name %></th>
+	     	</tr>
+	     	<tr>
+	     		<th class="sub-title">コーディネイトテーマ</th>
+	     	</tr>
+	     	<tr>
+	  			<th class="sub"><%= @post_image.code_thema %></th>
+	     	</tr>
+	     	<tr>
+	     		<th class="sub-title">コーディネイト説明</th>
+	     	</tr>
+	     	<tr>
+	  			<th class="sub"><%= @post_image.code_explain %></th>
+	     	</tr>
+	     	<tr>
+	     		<th class="sub-title">カテゴリー</th>
+	     	</tr>
+        <tr>
+          <th class="sub"><%= @post_image.category %></th>
+        </tr>
+	     	<tr>
+	     		<th class="sub-title">季節</th>
+	     	</tr>
+        <tr>
+          <th class="sub"><%= @post_image.season %></th>
+        </tr>
+	  	</tbody>
+	  </table>
+    <br>
+    <!-- お気に入り機能 -->
+    <div class="favorites">
+		  <% if user_signed_in? %>
+	    	<% if @post_image.favorited_by?(current_user) %>
+	      	<p><span class="glyphicon glyphicon-heart"></span><%=link_to @post_image.favorites.count, post_image_favorites_path(@post_image.id), method: :delete %></p>
+	    <% else %>
+	      <p><span class="glyphicon glyphicon-heart-empty"></span><%=link_to @post_image.favorites.count, post_image_favorites_path(@post_image.id), method: :post %></p>
+	    	<% end %>
+	  	<% else %>
+	    	<p><span>お気に入り数: </span><%= @post_image.favorites.count %></p>
+	  	<% end %>
+	  </div>
+
+　　<!-- コメント機能 -->
+    <div>
+    <% if user_signed_in? %>
+		  <%= form_with(model:[@post_image, @comment],url: post_image_comments_path(@post_image), method: :post, local: true) do |f| %>
+		  	<%= f.text_area :comment %>
+		  	<%= f.hidden_field :post_image_id, value: @post_image.id %>
+		  	<%= f.submit "コメントする" ,class: 'btn btn-primary' %>
+		  <% end %>
+    <% end %>
+  	</div>
+    <br>
+    <!-- コメント除去機能 -->
+    <div>
+    <% if user_signed_in? %>
+      <h4>コメント一覧</h4>
+      <% @comments.each do |comment| %>
+        <p class="image">
+          <%= link_to user_path(comment.user.id) do%>
+            <%= attachment_image_tag comment.user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size:'50x50' %>
+          <% end %>
+          <%= comment.comment %>
+          <% if current_user == comment.user %>
+            <%= link_to '削除する', post_image_comment_path(@post_image, comment), class: 'btn btn-outline-primary', method: :delete %>
+          <% end %>
+        </p>
+      <% end %>
+    <% end %>
+    </div>
+	</div>
+</div>
+
+<div>
+  <% if @post_image.user == current_user %>
+  	<%= link_to "編集", edit_post_image_path(@post_image) %>
+	<% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+

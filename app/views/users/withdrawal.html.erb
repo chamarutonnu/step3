@@ -1,0 +1,14 @@
+<div class="row center-block">
+	<h1 class="text-center">本当に退会しますか？</h1>
+	<p class="text-center">
+		退会すると、会員登録情報や<br>
+		これまでの購入履歴が閲覧できなくなります。<br>
+		退会する場合は、「退会する」をクリックして下さい。
+	</p>
+</div>
+<div class="row center-block">
+	<div class="col-xs-4 col-xs-offset-4">
+	<%= link_to "退会しない", user_path(@user), class: 'btn btn-primary btn-md' %>
+	<%= link_to "退会する", user_hide_path(@user), class: 'btn btn-danger btn-md', method: :patch, "data-confirm" => "本当に退会しますか？" %>
+	</div>
+</div>
