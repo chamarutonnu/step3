@@ -17,7 +17,7 @@
     <div class="user-information">
       <div class="col-xs-9">
         <p class="user-name"><%= @user.user_name %></p><br>
-        <p class="user_introduction"><%= @user.introduction %></p>
+        <p class="user_introduction"><%= simple_format(@user.introduction) %></p>
       </div>
     </div>
   </div>

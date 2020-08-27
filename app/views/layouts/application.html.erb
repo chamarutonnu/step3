@@ -23,6 +23,7 @@
       <div class="right-nav">
         <nav class="header-contents">
           <ul class="header-items">
+            <li>ようこそ<%= current_user.user_name %>さん！</li>
             <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
             <li><%= link_to 'user一覧', users_path %></li>
             <li><%= link_to '投稿一覧', post_images_path %></li>
