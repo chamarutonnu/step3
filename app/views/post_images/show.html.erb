@@ -32,6 +32,11 @@
 		<div class="post-image">
 			<%= attachment_image_tag @post_image, :image,:size =>'490x590' %>
 		</div>
+    <div class="tag-box">
+      <% @post_image.tags.each do |tag| %>
+      <span class="label"><%= tag.name %></span>
+    <% end %>
+    </div>
 	</div>
 
 	<div class="col-xs-6">

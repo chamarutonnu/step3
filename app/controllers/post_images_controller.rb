@@ -34,7 +34,11 @@ before_action :authenticate_user!, except: [:index, :show]
   	@post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
     	if @post_image.save
-      	redirect_to post_image_path(@post_image)
+         tags = Vision.get_image_data(@post_image.image)
+         tags.each do |tag|
+         @post_image.tags.create(name: tag)
+      end
+         redirect_to post_image_path(@post_image)
       else
       	render :new
       end
