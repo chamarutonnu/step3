@@ -1,0 +1,16 @@
+<div>
+  <% if user_signed_in? %>
+    <h4>コメント一覧</h4>
+    <% @comments.each do |comment| %>
+      <p class="image">
+        <%= link_to user_path(comment.user.id) do%>
+          <%= attachment_image_tag comment.user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size:'50x50' %>
+        <% end %>
+        <%= comment.comment %>
+        <% if current_user == comment.user %>
+          <%= link_to '削除する', post_image_comment_path(@post_image, comment), class: 'btn btn-outline-primary', method: :delete, remote: true %>
+        <% end %>
+      </p>
+    <% end %>
+  <% end %>
+</div>

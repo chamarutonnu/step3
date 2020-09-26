@@ -3,7 +3,7 @@
 <div class="flex">
     <% @post_images.each do |post_image| %>
       <div>
-        <%= link_to post_image_path(post_image.id) do %>
+        <%= link_to post_image_path(post_image.id), data: {turbolinks: false} do %>
         <%= attachment_image_tag post_image, :image, :size =>'340x340' %>
         <% end %>
       </div>

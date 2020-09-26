@@ -67,6 +67,10 @@ gem "refile-mini_magick"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'kaminari', '~> 1.2.1'
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano3-puma'
+gem 'capistrano-rbenv'
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

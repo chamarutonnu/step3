@@ -2,14 +2,14 @@ class CommentsController < ApplicationController
 
   def create
     @post_image = PostImage.find(params[:post_image_id])
-    @comment = @post_image.comments.new(comment_params)
+    @comment = @post_image.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to request.referer
+      # redirect_to request.referer
       else
       @post_image_new = PostImage.new
       @comments = @post_image.comments
-      redirect_to request.referer
+      # redirect_to request.referer
       end
   end
 
@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
       if @comment.user == current_user
       @comment.destroy
       end
-      redirect_to request.referer
+      # redirect_to request.referer
   end
 
 private

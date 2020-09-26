@@ -1,0 +1,9 @@
+<div>
+  <% if user_signed_in? %>
+    <%= form_with(model:[@post_image, @comment],url: post_image_comments_path(@post_image), method: :post, remote: true) do |f| %>
+      <%= f.text_area :comment %>
+      <%= f.hidden_field :post_image_id, value: @post_image.id %>
+      <%= f.submit "コメントする" ,class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
+</div>
