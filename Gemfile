@@ -74,4 +74,5 @@ gem 'capistrano-rbenv'
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
+gem "refile-s3"
 end
