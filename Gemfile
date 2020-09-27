@@ -75,4 +75,6 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 gem "refile-s3"
+gem 'ed25519'
+gem 'bcrypt_pbkdf'
 end
