@@ -4,7 +4,11 @@
     <div class="col-xs-3">
       <p class="image">
         <%= link_to user_path(@user.id) do%>
-        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size:'220x220' %>
+        <% if @user.profile_image_id.nil? %>
+          <%= image_tag "https://dmmpostimages.s3.ap-northeast-1.amazonaws.com/no_image.png",:size =>'220x220' %>
+        <% else %>
+          <%= image_tag "https://dmmpostimages.s3.ap-northeast-1.amazonaws.com/store/#{@user.profile_image_id}",:size =>'220x220' %>
+        <% end %>
         <% end %>
       </p>
       <% if user_signed_in? %>
@@ -33,8 +37,16 @@
 <div>
   <% @users.each do |user| %>
     <hr>
-    <p><span class="image"><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size:'40x40' %> </span><%= link_to user.user_name, user_path(user.id) %>
-     <% if user_signed_in? %>
+    <p>
+      <span class="image">
+        <% if user.profile_image_id.nil? %>
+          <%= image_tag "https://dmmpostimages.s3.ap-northeast-1.amazonaws.com/no_image.png",:size =>'40x40' %>
+        <% else %>
+          <%= image_tag "https://dmmpostimages.s3.ap-northeast-1.amazonaws.com/store/#{user.profile_image_id}",:size =>'40x40' %>
+        <% end %>
+      </span>
+      <%= link_to user.user_name, user_path(user.id) %>
+      <% if user_signed_in? %>
         <% if current_user != user %>
             <% if user.followed_by?(current_user) %>
                 <span> /<%=link_to "フォロー解除", user_relationships_path(user.id), method: :delete %></span>
