@@ -1,4 +1,4 @@
-<!-- おすすめユーザー -->
+<!--  おすすめユーザー -->
 <div class="top-box">
   <div class="row">
     <div class="col-xs-5">
@@ -40,22 +40,14 @@
 
     <div class="col-xs-7">
       <h2>おすすめのコーディネイト</h2>
-      <div class="a">
-        <div class="b">
-          <%= link_to post_image_path(2) do %>
-            <%= image_tag asset_path("nami.jpg", alt: "ゲーム画像1"), class: "c" %>
-          <% end %>
-        </div>
-        <div class="b">
-          <%= link_to post_image_path(47) do %>
-            <%= image_tag asset_path("hiro17.jpg", alt: "ゲーム画像1"), class: "c" %>
-          <% end %>
-        </div>
-        <div class="b">
-          <%= link_to post_image_path(37) do %>
-            <%= image_tag asset_path("yugo8.jpg", alt: "ゲーム画像1"), class: "c" %>
-          <% end %>
-        </div>
+      <div class="roll">
+        <% @popular.each do |popular|%>
+          <div>
+            <%=link_to post_image_path(popular) do %>
+              <%= image_tag "https://dmmpostimages.s3.ap-northeast-1.amazonaws.com/store/#{popular.image_id}", class: "c" %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
-  </div>
+    </div>
 </div>

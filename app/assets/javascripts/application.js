@@ -17,11 +17,11 @@
 
 
 $(function() {
-  $('.a').slick({
+  $('.roll').slick({
       dots: true,
   });
 
   $('.slick-dots li').on('mouseover', function() {
-    $('.a').slick('goTo', $(this).index());
+    $('.roll').slick('goTo', $(this).index());
   });
 });

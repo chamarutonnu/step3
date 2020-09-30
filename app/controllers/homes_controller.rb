@@ -1,6 +1,9 @@
 class HomesController < ApplicationController
   def top
     @famous_users = User.where(id: User.joins(:post_images).group(:id).count("post_images.id").sort {|a,b| a[1]<=>b[1]}.last(5).map{|x| x.first}.last(5))
+    # @popular = PostImage.where(id: PostImage.joins(:favorites).group(:id).count("favorites.id").sort {|a,b| a[1]<=>b[1]}.last(5).map{|x| x.first}.last(5))
+    counts = PostImage.joins(:favorites).group(:id).order("count_all desc").count
+    @popular = PostImage.find(counts.map{|id, count| id})
   end
 
   def about
